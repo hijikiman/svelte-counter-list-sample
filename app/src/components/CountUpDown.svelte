@@ -2,10 +2,14 @@
   export let count: number = 0
 
   const increment = () => {
-    count += 1
+    if (10000 > count) {
+      count += 1
+    }
   }
   const decrement = () => {
-    count -= 1
+    if (count > 0) {
+      count -= 1
+    }
   }
 </script>
 
