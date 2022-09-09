@@ -2,6 +2,7 @@
   import CountUpDown from './CountUpDown.svelte'
   import CountReset from './CountReset.svelte'
   import CounterName from './CounterName.svelte'
+  import CounterRemove from './CounterRemove.svelte'
   import type { CounterCardValueType } from '../types'
 
   export let value: CounterCardValueType = { name: '', count: 0 }
@@ -14,6 +15,7 @@
     <CountUpDown bind:count={value.count} />
     <CountReset bind:count={value.count} />
   </div>
+  <CounterRemove on:remove />
 </div>
 
 <style>

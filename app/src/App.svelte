@@ -7,13 +7,17 @@
   const onClick = () => {
     counterCardList = [...counterCardList, { name: 'hoge', count: 0 }]
   }
+  const removeCounterCard = (id: number) => {
+    counterCardList.splice(id, 1)
+    counterCardList = counterCardList
+  }
 </script>
 
 <main>
   <h1>Multiple Counter</h1>
   <button on:click={onClick}>add</button>
-  {#each counterCardList as counterCardValue}
-    <CounterCard value={counterCardValue} />
+  {#each counterCardList as counterCardValue, id}
+    <CounterCard value={counterCardValue} on:remove={() => removeCounterCard(id)} />
   {/each}
   <div class="card" />
 </main>
