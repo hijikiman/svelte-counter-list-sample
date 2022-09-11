@@ -36,7 +36,7 @@
   <button on:click={onClick}>add</button>
   {#each counterCardList as counterCardValue, id}
     <CounterCard
-      value={counterCardValue}
+      {...counterCardValue}
       on:inc={() => increment(id)}
       on:dec={() => decrement(id)}
       on:reset={() => reset(id)}

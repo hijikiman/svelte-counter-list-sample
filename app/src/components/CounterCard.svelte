@@ -5,12 +5,13 @@
   import CounterRemove from './CounterRemove.svelte'
   import type { CounterCardValueType } from '../types'
 
-  export let value: CounterCardValueType = { name: '', count: 0 }
+  export let name: CounterCardValueType['name'] = ''
+  export let count: CounterCardValueType['count'] = 0
 </script>
 
 <div class="card">
-  <CounterName bind:name={value.name} />
-  <span>{value.count}</span>
+  <CounterName bind:name />
+  <span>{count}</span>
   <div class="count-controller">
     <CountUpDown on:inc on:dec />
     <CountReset on:reset />
