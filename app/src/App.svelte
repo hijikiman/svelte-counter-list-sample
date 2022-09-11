@@ -2,11 +2,27 @@
   import CounterCard from './components/CounterCard.svelte'
   import type { CounterCardValueType } from './types'
 
+  const MAX_NAME_LENGTH = 10
   let new_counter_name = ''
+  let validateError = ''
   let counterCardList: CounterCardValueType[] = []
   $: total_count = counterCardList.map((item) => item.count).reduce((sum, item) => sum + item, 0)
 
+  const validateName = () => {
+    if (new_counter_name.length == 0) {
+      validateError = 'Counter name is required.'
+      return false
+    }
+    if (new_counter_name.length > MAX_NAME_LENGTH) {
+      validateError = `Counter name is limited to ${MAX_NAME_LENGTH} characters.`
+      return false
+    }
+    validateError = ''
+    return true
+  }
+
   const addCounterCard = () => {
+    if (!validateName()) return
     counterCardList = [...counterCardList, { name: new_counter_name, count: 0 }]
     new_counter_name = ''
   }
@@ -37,6 +53,9 @@
   </p>
   <input type="text" bind:value={new_counter_name} />
   <button on:click={addCounterCard}>add</button>
+  {#if validateError.length != 0}
+    <p class="validate-error">{validateError}</p>
+  {/if}
   <ul>
     {#each counterCardList as counterCardValue, id}
       <li>
@@ -60,5 +79,9 @@
   }
   li {
     list-style-type: none;
+  }
+  .validate-error {
+    font-size: 0.5em;
+    color: red;
   }
 </style>
