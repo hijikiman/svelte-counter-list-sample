@@ -34,15 +34,19 @@
     total count: {total_count}
   </p>
   <button on:click={addCounterCard}>add</button>
-  {#each counterCardList as counterCardValue, id}
-    <CounterCard
-      {...counterCardValue}
-      on:inc={() => increment(id)}
-      on:dec={() => decrement(id)}
-      on:reset={() => reset(id)}
-      on:remove={() => removeCounterCard(id)}
-    />
-  {/each}
+  <ul>
+    {#each counterCardList as counterCardValue, id}
+      <li>
+        <CounterCard
+          {...counterCardValue}
+          on:inc={() => increment(id)}
+          on:dec={() => decrement(id)}
+          on:reset={() => reset(id)}
+          on:remove={() => removeCounterCard(id)}
+        />
+      </li>
+    {/each}
+  </ul>
   <div class="card" />
 </main>
 
@@ -50,5 +54,8 @@
   h1 {
     font-size: 3.2em;
     line-height: 1.1;
+  }
+  li {
+    list-style-type: none;
   }
 </style>
