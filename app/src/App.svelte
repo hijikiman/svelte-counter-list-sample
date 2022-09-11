@@ -2,11 +2,13 @@
   import CounterCard from './components/CounterCard.svelte'
   import type { CounterCardValueType } from './types'
 
+  let new_counter_name = ''
   let counterCardList: CounterCardValueType[] = []
   $: total_count = counterCardList.map((item) => item.count).reduce((sum, item) => sum + item, 0)
 
   const addCounterCard = () => {
-    counterCardList = [...counterCardList, { name: 'hoge', count: 0 }]
+    counterCardList = [...counterCardList, { name: new_counter_name, count: 0 }]
+    new_counter_name = ''
   }
 
   const increment = (id: number) => {
@@ -33,6 +35,7 @@
   <p>
     total count: {total_count}
   </p>
+  <input type="text" bind:value={new_counter_name} />
   <button on:click={addCounterCard}>add</button>
   <ul>
     {#each counterCardList as counterCardValue, id}
