@@ -51,8 +51,10 @@
   <p>
     total count: {total_count}
   </p>
-  <input type="text" bind:value={new_counter_name} />
-  <button on:click={addCounterCard}>add</button>
+  <form on:submit|preventDefault={addCounterCard}>
+    <input type="text" bind:value={new_counter_name} />
+    <button type="submit">add</button>
+  </form>
   {#if validateError.length != 0}
     <p class="validate-error">{validateError}</p>
   {/if}
