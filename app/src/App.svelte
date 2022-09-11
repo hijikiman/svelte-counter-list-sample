@@ -5,7 +5,7 @@
   let counterCardList: CounterCardValueType[] = []
   $: total_count = counterCardList.map((item) => item.count).reduce((sum, item) => sum + item, 0)
 
-  const onClick = () => {
+  const addCounterCard = () => {
     counterCardList = [...counterCardList, { name: 'hoge', count: 0 }]
   }
 
@@ -33,7 +33,7 @@
   <p>
     total count: {total_count}
   </p>
-  <button on:click={onClick}>add</button>
+  <button on:click={addCounterCard}>add</button>
   {#each counterCardList as counterCardValue, id}
     <CounterCard
       {...counterCardValue}
