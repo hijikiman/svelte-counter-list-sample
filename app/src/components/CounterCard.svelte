@@ -12,8 +12,8 @@
   <CounterName bind:name={value.name} />
   <span>{value.count}</span>
   <div class="count-controller">
-    <CountUpDown bind:count={value.count} />
-    <CountReset bind:count={value.count} />
+    <CountUpDown on:inc on:dec />
+    <CountReset on:reset />
   </div>
   <CounterRemove on:remove />
 </div>

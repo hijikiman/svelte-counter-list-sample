@@ -1,9 +1,12 @@
 <script lang="ts">
-  export let count: number = 0
+  import { createEventDispatcher } from 'svelte'
+
+  const dispatch = createEventDispatcher()
+  const onClick = () => dispatch('reset')
 </script>
 
 <div>
-  <button on:click={() => (count = 0)}>0</button>
+  <button on:click={onClick}>0</button>
 </div>
 
 <style>

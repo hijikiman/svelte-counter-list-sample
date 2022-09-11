@@ -1,21 +1,14 @@
 <script lang="ts">
-  export let count: number = 0
+  import { createEventDispatcher } from 'svelte'
 
-  const increment = () => {
-    if (10000 > count) {
-      count += 1
-    }
-  }
-  const decrement = () => {
-    if (count > 0) {
-      count -= 1
-    }
-  }
+  const dispatch = createEventDispatcher()
+  const onClickPlus = () => dispatch('inc')
+  const onClickMinus = () => dispatch('dec')
 </script>
 
 <div class="button-group">
-  <button on:click={increment}>+</button>
-  <button on:click={decrement}>-</button>
+  <button on:click={onClickPlus}>+</button>
+  <button on:click={onClickMinus}>-</button>
 </div>
 
 <style>
