@@ -7,10 +7,11 @@
 
   export let name: CounterCardValueType['name'] = ''
   export let count: CounterCardValueType['count'] = 0
+  export let MAX_NAME_LENGTH: number = 5
 </script>
 
 <div class="card">
-  <CounterName bind:name />
+  <CounterName {MAX_NAME_LENGTH} bind:name on:change />
   <span class="count">{count}</span>
   <div class="count-controller">
     <CountUpDown on:inc on:dec />

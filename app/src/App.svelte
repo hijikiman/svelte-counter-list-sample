@@ -8,12 +8,12 @@
   let counterCardList: CounterCardValueType[] = []
   $: total_count = counterCardList.map((item) => item.count).reduce((sum, item) => sum + item, 0)
 
-  const validateName = () => {
-    if (new_counter_name.length == 0) {
+  const validateName = (new_name: string) => {
+    if (new_name.length == 0) {
       validateError = 'Counter name is required.'
       return false
     }
-    if (new_counter_name.length > MAX_NAME_LENGTH) {
+    if (new_name.length > MAX_NAME_LENGTH) {
       validateError = `Counter name is limited to ${MAX_NAME_LENGTH} characters.`
       return false
     }
@@ -21,8 +21,12 @@
     return true
   }
 
+  const changeCounterName = (event: { detail: { value: string } }, id: number) => {
+    if (!validateName(event.detail.value)) return
+    counterCardList[id].name = event.detail.value
+  }
   const addCounterCard = () => {
-    if (!validateName()) return
+    if (!validateName(new_counter_name)) return
     counterCardList = [...counterCardList, { name: new_counter_name, count: 0 }]
     new_counter_name = ''
   }
@@ -66,6 +70,8 @@
       <li>
         <CounterCard
           {...counterCardValue}
+          {MAX_NAME_LENGTH}
+          on:change={(e) => changeCounterName(e, id)}
           on:inc={() => increment(id)}
           on:dec={() => decrement(id)}
           on:reset={() => reset(id)}
