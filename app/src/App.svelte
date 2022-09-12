@@ -86,7 +86,13 @@
     list-style-type: none;
   }
   .validate-error {
-    font-size: 0.5em;
+    font-size: 0.7em;
     color: red;
+  }
+  ul {
+    margin-top: 2em;
+  }
+  li:not(:first-child) {
+    margin-top: 0.7em;
   }
 </style>

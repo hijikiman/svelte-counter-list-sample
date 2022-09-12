@@ -11,7 +11,7 @@
 
 <div class="card">
   <CounterName bind:name />
-  <span>{count}</span>
+  <span class="count">{count}</span>
   <div class="count-controller">
     <CountUpDown on:inc on:dec />
     <CountReset on:reset />
@@ -22,5 +22,9 @@
 <style>
   .count-controller {
     display: inline-block;
+  }
+  .count {
+    display: inline-block;
+    min-width: 3em;
   }
 </style>
