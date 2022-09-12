@@ -74,7 +74,6 @@
       </li>
     {/each}
   </ul>
-  <div class="card" />
 </main>
 
 <style>
