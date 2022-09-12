@@ -78,6 +78,8 @@
           on:remove={() => removeCounterCard(id)}
         />
       </li>
+    {:else}
+      <p class="no-counter">There is no counter.</p>
     {/each}
   </ul>
 </main>
@@ -99,5 +101,12 @@
   }
   li:not(:first-child) {
     margin-top: 0.7em;
+  }
+  .no-counter {
+    background-color: #2c2c2c;
+    color: darkgray;
+    width: 420px;
+    padding: 0.5em 2em;
+    border-radius: 1em;
   }
 </style>
