@@ -53,6 +53,9 @@
   </p>
   <form on:submit|preventDefault={addCounterCard}>
     <input type="text" bind:value={new_counter_name} />
+    <span style="color:{new_counter_name.length > MAX_NAME_LENGTH ? 'red' : 'inherit'}"
+      >{new_counter_name.length}/{MAX_NAME_LENGTH}</span
+    >
     <button type="submit">add</button>
   </form>
   {#if validateError.length != 0}
