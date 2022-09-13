@@ -4,6 +4,7 @@
   export let name: string = ''
   export let MAX_NAME_LENGTH: number = 5
   let new_name: string = name
+  $: new_name = name
   let err: boolean = false
   const dispatch = createEventDispatcher()
 
